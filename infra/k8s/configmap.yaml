@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: llm-guardrails-config
+  namespace: llm-guardrails
+data:
+  ENVIRONMENT: "production"
+  LOG_LEVEL: "INFO"
+  LOG_FORMAT: "json"
+  ALLOWED_MODELS: '["gpt-4o","gpt-4o-mini","gpt-4-turbo","claude-3-opus","claude-3-sonnet","claude-3-haiku","gemini-1.5-pro","gemini-1.5-flash","mixtral-8x7b","llama3-70b"]'
+  DEFAULT_MODEL: "gpt-4o-mini"
+  FALLBACK_MODEL: "claude-3-haiku"
+  RATE_LIMIT_REQUESTS: "100"
+  RATE_LIMIT_WINDOW_SECONDS: "60"
+  MAX_PROMPT_LENGTH: "32000"
+  MAX_RESPONSE_LENGTH: "32000"
+  THREAT_SCORE_THRESHOLD_BLOCK: "0.85"
+  THREAT_SCORE_THRESHOLD_SANITIZE: "0.60"
+  THREAT_SCORE_THRESHOLD_ESCALATE: "0.40"
+  ENABLE_OTEL_TRACING: "true"
+  OTEL_SERVICE_NAME: "llm-guardrails-gateway"
+  OTEL_EXPORTER_OTLP_ENDPOINT: "http://otel-collector:4317"
